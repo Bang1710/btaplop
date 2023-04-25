@@ -8,6 +8,9 @@ let btadd=document.getElementById("add");
 let btcancel=document.getElementById("cancel");
 let result = document.getElementById("result");
 
+const nodepara = document.getElementById("node_para");
+var result1 = "";
+
 btadd.addEventListener("click", function(){
 
 let tobj = new Array (count, hoten.value, tuoi.value, mau.value);
@@ -24,16 +27,45 @@ if(hoten.value == "") {
     window.alert("Hãy nhập tuổi !");
     return;
 } else {
-    let value = `
-    <button id="${count}" class="btn m-3" style="color: white; background-color: ${mau.value};">
-    ${hoten.value} có tuổi là ${tuoi.value}
-    </button>
-    `;
-    result.innerHTML += value;
+    // let value = `
+    // <button id="${count}" class="btn m-3" style="color: white; background-color: ${mau.value};">
+    // ${hoten.value} có tuổi là ${tuoi.value}
+    // </button>
+    // `;
+    // result.innerHTML += value;
+    // count++;
+    var stringresult = `
+	<tr class = "tr_result" id = "${count}" style ="background-color:${mau.value};">
+		<th class="th_result" scope="col">${count + 1}</th>
+		<th class="th_result" scope="col">${hoten.value}</th>
+		<th class="th_result" scope="col">${tuoi.value}</th>
+    </tr>
+	`;
+	result1 += stringresult;
+	nodepara.innerHTML = result1; 
     count++;
+    reset()
 }
 
-let tnode = document.querySelectorAll("button");
+// let tnode = document.querySelectorAll("button");
+// console.log(tnode);
+// var mylistnode = Array.from(tnode)
+// mylistnode.forEach(element => {
+//     element.addEventListener("click", function() {
+//         let id = this.id;
+//     let index = 0;
+//     for(let i=0; i<data.length; i++)
+//     if(data[i] [0] == id){
+//         index = i;
+//         break;
+//     }
+//     hoten.value = data[index] [1];
+//     tuoi.value = data[index] [2];
+//     mau.value = data[index] [3];
+//     })
+// });
+
+let tnode = document.getElementsByClassName("tr_result");
 console.log(tnode);
 var mylistnode = Array.from(tnode)
 mylistnode.forEach(element => {
@@ -50,6 +82,8 @@ mylistnode.forEach(element => {
     mau.value = data[index] [3];
     })
 });
+
+
 
 // tnode.style.backgroundColor = mau.value;
 // tnode.addEventListener("click", function(){
@@ -68,8 +102,10 @@ mylistnode.forEach(element => {
 // result.appendChild(tnode)
 
 });
-btcancel.addEventListener("click", function(){
+btcancel.addEventListener("click", reset());
+
+function reset(){
     hoten.value = "";
     tuoi.value = 0;
     mau.value = "";
-});
+}

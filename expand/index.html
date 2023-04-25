@@ -18,8 +18,10 @@
             <form class="row">
                 <label for="hoten" class="col-4">Họ tên:</label>
                 <input class="col-8" name="hoten" type="text">
-                <label for="tuoi" class="col-4">Tuổi:</label>
-                <input class="col-8" name="tuoi" type="range" min="0" max="100" value="0">
+                <label for="tuoi" class="col-2">Tuổi:</label>
+                <label for="min-value" class="col-2">0</label>
+                <input class="col-6" name="tuoi" type="range" min="0" max="100" value="0">
+                <label for="max-value" class="col-2">100</label>
                 <label for="mau" class="col-4">Màu:</label>
                 <input class="col-6" name="mau" type="color">
                 <input class="col-6 " type="button" value="Thêm" id="add">
@@ -27,7 +29,18 @@
             </form>
         </div>
         <div class="col-6 bg-success " id="result">
-
+            <table class="table table-striped" id="datatable">
+                <thead>
+                  <tr>
+                    <th scope="col">STT</th>
+                    <th scope="col">Họ tên</th>
+                    <th scope="col">Tuổi</th>
+                  </tr>
+                </thead>
+                <tbody id="node_para">
+                 
+                </tbody>
+              </table>
         </div>
     </div>
     <script src="./main.js"></script>
